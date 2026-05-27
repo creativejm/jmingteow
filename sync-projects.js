@@ -1,7 +1,7 @@
-/**
+﻿/**
  * sync-projects.js
  * 1. 自動掃描 data/projects/ 各分類資料夾，更新 data/projects.json
- * 2. 自動補建 projects/detail/{id}.htm（若不存在）
+ * 2. 自動補建 projects/detail/{id}.html（若不存在）
  *
  * 用法：
  *   node sync-projects.js          ← 掃描一次就結束
@@ -16,7 +16,7 @@ const DATA_DIR     = path.join(__dirname, 'data', 'projects');
 const OUTPUT       = path.join(__dirname, 'data', 'projects.json');
 const DETAIL_DIR   = path.join(__dirname, 'projects', 'detail');
 
-// ── Detail .htm 模板 ──
+// ── Detail .html 模板 ──
 function detailTemplate(id) {
     return `<!DOCTYPE html>
 <html lang="zh-TW">
@@ -48,8 +48,8 @@ function detailTemplate(id) {
 
   <script>
     $(function () {
-      $('header').load('../../include/header.htm');
-      $('footer').load('../../include/footer.htm');
+      $('header').load('../../include/header.html');
+      $('footer').load('../../include/footer.html');
     });
   </script>
 </head>
@@ -66,7 +66,7 @@ function detailTemplate(id) {
           <img id="detailCoverImg" src="" alt="Project Cover" />
           <div id="detailSections"></div>
           <div class="back">
-            <a href="../index.htm">All Projects</a>
+            <a href="../index.html">All Projects</a>
           </div>
         </div>
       </div>
@@ -120,8 +120,8 @@ function sync() {
                 fs.renameSync(filePath, newFilePath);
                 renamedFiles.push(`${fileBasename} → ${id}`);
 
-                // 刪除舊的 detail .htm（內含舊 id）
-                const oldDetailPath = path.join(DETAIL_DIR, fileBasename + '.htm');
+                // 刪除舊的 detail .html（內含舊 id）
+                const oldDetailPath = path.join(DETAIL_DIR, fileBasename + '.html');
                 if (fs.existsSync(oldDetailPath)) {
                     fs.unlinkSync(oldDetailPath);
                 }
@@ -129,8 +129,8 @@ function sync() {
 
             projects.push({ id, folder: category });
 
-            // 建立（或補建）detail .htm
-            const detailPath = path.join(DETAIL_DIR, id + '.htm');
+            // 建立（或補建）detail .html
+            const detailPath = path.join(DETAIL_DIR, id + '.html');
             if (!fs.existsSync(detailPath)) {
                 fs.writeFileSync(detailPath, detailTemplate(id), 'utf-8');
                 createdDetails.push(id);

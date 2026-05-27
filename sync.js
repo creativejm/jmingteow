@@ -1,8 +1,8 @@
-/**
+﻿/**
  * sync.js — 作品清單自動同步 + 個別頁面生成器
  * 啟動後自動監控 data/projects/ 資料夾
  * 1. 更新 data/projects/all.json
- * 2. 自動生成 projects/detail/jianyuan.htm 等獨立頁面
+ * 2. 自動生成 projects/detail/jianyuan.html 等獨立頁面
  *
  * 使用方法：node sync.js
  */
@@ -17,15 +17,15 @@ const SKIP_FILES  = new Set(['all.json', 'manifest.json', 'projects.json']);
 const FOLDERS     = ['logo-design', 'web-design', 'illustration', 'animation'];
 const POLL_MS     = 3000;
 
-// ── 生成每個作品的獨立 .htm 頁面 ──
-// 路徑：projects/detail/jianyuan.htm
+// ── 生成每個作品的獨立 .html 頁面 ──
+// 路徑：projects/detail/jianyuan.html
 // 相對路徑往上兩層到根目錄
 function generateDetailPage(id) {
     if (!fs.existsSync(DETAIL_DIR)) {
         fs.mkdirSync(DETAIL_DIR, { recursive: true });
     }
 
-    const htmlPath = path.join(DETAIL_DIR, id + '.htm');
+    const htmlPath = path.join(DETAIL_DIR, id + '.html');
 
     const html = `<!DOCTYPE html>
 <html lang="zh-TW">
@@ -57,8 +57,8 @@ function generateDetailPage(id) {
 
   <script>
     $(function () {
-      $('header').load('../../include/header.htm');
-      $('footer').load('../../include/footer.htm');
+      $('header').load('../../include/header.html');
+      $('footer').load('../../include/footer.html');
     });
   </script>
 </head>
@@ -75,7 +75,7 @@ function generateDetailPage(id) {
           <img id="detailCoverImg" src="" alt="Project Cover" />
           <div id="detailSections"></div>
           <div class="back">
-            <a href="../index.htm">All Projects</a>
+            <a href="../index.html">All Projects</a>
           </div>
         </div>
       </div>
@@ -87,10 +87,10 @@ function generateDetailPage(id) {
 </html>`;
 
     fs.writeFileSync(htmlPath, html, 'utf8');
-    console.log('    📄 生成頁面：projects/detail/' + id + '.htm');
+    console.log('    📄 生成頁面：projects/detail/' + id + '.html');
 }
 
-// ── 掃描所有 JSON，重建 all.json + 生成 .htm ──
+// ── 掃描所有 JSON，重建 all.json + 生成 .html ──
 function buildAllJson() {
     const projects = [];
 
@@ -153,7 +153,7 @@ if (isOnce) {
 } else {
     console.log('🔄 作品同步器已啟動，每 ' + (POLL_MS / 1000) + ' 秒自動掃描...');
     console.log('📁 監控路徑：' + ROOT);
-    console.log('📄 頁面輸出：projects/detail/*.htm');
+    console.log('📄 頁面輸出：projects/detail/*.html');
     console.log('─────────────────────────────────────');
     buildAllJson();
     setInterval(buildAllJson, POLL_MS);

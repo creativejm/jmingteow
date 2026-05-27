@@ -1,4 +1,4 @@
-const http = require('http');
+﻿const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
@@ -6,7 +6,7 @@ const PORT = 3000;
 const ROOT = __dirname;
 
 const MIME = {
-  '.htm':  'text/html; charset=utf-8',
+  '.html':  'text/html; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
   '.css':  'text/css; charset=utf-8',
   '.js':   'application/javascript; charset=utf-8',
@@ -26,13 +26,13 @@ const MIME = {
 
 const server = http.createServer((req, res) => {
   let urlPath = decodeURIComponent(req.url.split('?')[0].split('#')[0]);
-  if (urlPath === '/') urlPath = '/index.htm';
+  if (urlPath === '/') urlPath = '/index.html';
 
   let filePath = path.join(ROOT, urlPath);
 
-  // 若路徑是目錄，嘗試 index.htm
+  // 若路徑是目錄，嘗試 index.html
   if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
-    const tryHtm = path.join(filePath, 'index.htm');
+    const tryHtm = path.join(filePath, 'index.html');
     const tryHtml = path.join(filePath, 'index.html');
     if (fs.existsSync(tryHtm)) filePath = tryHtm;
     else if (fs.existsSync(tryHtml)) filePath = tryHtml;

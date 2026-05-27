@@ -1,4 +1,4 @@
-$(function(){
+﻿$(function(){
     //主要執行js
 })
 function Silder($targer,child_selector,reFn, m_view=3, m_viewDis=3, infinite=false){
@@ -425,7 +425,7 @@ $(function () {
       });
     });
 
-    // --- Dynamic Music logic is now inside index.htm inline script ---
+    // --- Dynamic Music logic is now inside index.html inline script ---
 
 
     // --- Interactive Map & Drawing Journal ---

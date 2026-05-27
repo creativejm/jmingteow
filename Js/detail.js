@@ -1,15 +1,15 @@
-$(function () {
+﻿$(function () {
     // ── 1. 讀取作品 ID（三種方式，優先順序如下）──
-    // 方式 A: 獨立頁面（projects/detail/jianyuan.htm）設定的 PROJECT_ID 變數
-    // 方式 B: URL hash（detail.htm#jianyuan）
-    // 方式 C: Query string（detail.htm?id=jianyuan，向後相容）
+    // 方式 A: 獨立頁面（projects/detail/jianyuan.html）設定的 PROJECT_ID 變數
+    // 方式 B: URL hash（detail.html#jianyuan）
+    // 方式 C: Query string（detail.html?id=jianyuan，向後相容）
     var projectId = (window.PROJECT_ID || '')
         || window.location.hash.replace('#', '').trim()
         || new URLSearchParams(window.location.search).get('id')
         || '';
 
     // ── 路徑前綴：獨立頁面在 projects/detail/ 下，要往上兩層 ──
-    // 一般 detail.htm 在 projects/ 下，往上一層即可
+    // 一般 detail.html 在 projects/ 下，往上一層即可
     var prefix = window.PATH_PREFIX || '../';
 
     if (!projectId) {
