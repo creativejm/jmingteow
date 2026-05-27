@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -193,7 +193,7 @@ $(function(){
         // ✏️ 圖片路徑請在 portfolio.css 的 .prop-notebook { background-image: ... } 修改
         var cssBg   = window.getComputedStyle(notebookProp).backgroundImage;
         var srcMatch = cssBg.match(/url\(["']?([^"')]+)["']?\)/);
-        img.src = srcMatch ? srcMatch[1] : 'images/index/notebook.png';
+        img.src = srcMatch ? srcMatch[1] : 'Images/index/notebook.png';
 
         // 根據圖片原始比例計算實際顯示尺寸
         function resize() {
@@ -647,7 +647,7 @@ $(document).ready(function() {
 <body class="index">
 
 <!-- header -->
-<header>header</header>
+<header class="index">header</header>
 <!-- header end -->
 
 
@@ -656,7 +656,7 @@ $(document).ready(function() {
 <div class="bodybox index">
 
         <!-- Audio source: video.mp4 -->
-        <video id="cdAudio" src="images/index/video.mp4" preload="metadata" style="position:absolute;top:-9999px;left:-9999px;width:1px;height:1px;" muted-video="false"></video>
+        <video id="cdAudio" src="Images/index/video.mp4" preload="metadata" style="position:absolute;top:-9999px;left:-9999px;width:1px;height:1px;" muted-video="false"></video>
 
         <!-- exhibition hero -->
             <div id="cursorLight"></div>
@@ -668,8 +668,8 @@ $(document).ready(function() {
                     <h2 class="role">Web Designer & Illustrator</h2>
                     <p class="desc">I turn ideas into beautiful, fully functional websites through design and development.</p>
                     <div class="hero-actions">
-                        <a href="/projects/index.html" class="btn secondary">My Projects</a>
-                        <a href="/contact/index.html" class="btn primary">Contact Me</a>
+                        <a href="projects/index.html" class="btn secondary">My Projects</a>
+                        <a href="contact/index.html" class="btn primary">Contact Me</a>
                     </div>
                 </div>
 
@@ -848,7 +848,7 @@ $(document).ready(function() {
             <div class="lightbox-overlay"></div>
             <div class="lightbox-content">
                 <!-- User should place their image here -->
-                <img src="images/index/face-wink.jpg" alt="Winking Face">
+                <img src="Images/index/face-wink.jpg" alt="Winking Face">
                 <a href="https://www.instagram.com/jmory_/" target="_blank" class="lightbox-credit">@jmory_</a>
                 <span class="lightbox-close">&times;</span>
             </div>
@@ -857,7 +857,7 @@ $(document).ready(function() {
 </div><!-- /.bodybox.index -->
 
 <!-- footer -->
-<footer><b>footer</b></footer>
+<footer class="index"><b>footer</b></footer>
 <!-- footer end -->
 
 </body>
