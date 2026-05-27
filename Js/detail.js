@@ -227,7 +227,7 @@ $(function () {
             }
             
             // 中間加入 Back 鏈接
-            $nav.append($('<a/>', { 'class': 'back-btn', href: 'javascript:history.back()', text: 'Back' }));
+            $nav.append($('<a/>', { 'class': 'back', href: 'javascript:history.back()', text: 'Back' }));
             
             if (nextId) {
                 $nav.append($('<a/>', { 'class': 'UI longnext', href: detailHrefFor(nextId) }));
