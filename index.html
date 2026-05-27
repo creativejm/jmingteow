@@ -641,6 +641,7 @@ $(document).ready(function() {
     }
 });
 </script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 </head>
 
@@ -859,6 +860,18 @@ $(document).ready(function() {
 <!-- footer -->
 <footer class="index"><b>footer</b></footer>
 <!-- footer end -->
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/m@n@ger/";
+        });
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
