@@ -53,7 +53,7 @@ function detailTemplate(id) {
     });
   </script>
 </head>
-<body>
+<body style="opacity: 0; transition: opacity 0.15s ease-in-out;">
   <header></header>
 
   <div class="bodybox detail">

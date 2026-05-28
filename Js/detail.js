@@ -30,6 +30,7 @@ $(function () {
     function tryNextFolder(index) {
         if (index >= folderNames.length) {
             $('#detailTitle').text('Project Not Found');
+            $('body').css('opacity', 1);
             return;
         }
         var folder = folderNames[index];
@@ -190,6 +191,7 @@ $(function () {
                 );
             }
         });
+        $('body').css('opacity', 1);
     }
 
     // ── 增加 Previous / Next 連結功能，動態插入到 detail 頁底部 ──
