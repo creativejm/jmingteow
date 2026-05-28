@@ -90,6 +90,9 @@ $(function () {
 
         // 4. 封面圖（在簡介下方）
         var cover = fixPath(project.cover_image);
+        var showBody = function() {
+            $('body').css('opacity', 1);
+        };
         if (cover) {
             var $img = $('#detailCoverImg');
             $img.attr('src', cover).attr('alt', project.title).show();
@@ -99,8 +102,17 @@ $(function () {
             } else {
                 $img.addClass('align-full');
             }
+            // 監聽封面圖載入，完成後才淡入網頁，防大圖載入引起的版面跳動
+            if ($img[0].complete) {
+                showBody();
+            } else {
+                $img.on('load error', function() {
+                    showBody();
+                });
+            }
         } else {
             $('#detailCoverImg').hide();
+            showBody();
         }
 
         // 5. 動態積木內容
@@ -191,7 +203,6 @@ $(function () {
                 );
             }
         });
-        $('body').css('opacity', 1);
     }
 
     // ── 增加 Previous / Next 連結功能，動態插入到 detail 頁底部 ──
