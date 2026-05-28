@@ -65,9 +65,6 @@ function detailTemplate(id) {
           <p id="detailDesc"></p>
           <img id="detailCoverImg" src="" alt="Project Cover" />
           <div id="detailSections"></div>
-          <div class="back">
-            <a href="index.html">All Projects</a>
-          </div>
         </div>
       </div>
     </div>

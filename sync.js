@@ -74,9 +74,6 @@ function generateDetailPage(id) {
           <p id="detailDesc"></p>
           <img id="detailCoverImg" src="" alt="Project Cover" />
           <div id="detailSections"></div>
-          <div class="back">
-            <a href="index.html">All Projects</a>
-          </div>
         </div>
       </div>
     </div>
@@ -86,8 +83,14 @@ function generateDetailPage(id) {
 </body>
 </html>`;
 
-    fs.writeFileSync(htmlPath, html, 'utf8');
-    console.log('    📄 生成頁面：projects/' + id + '.html');
+    var existing = fs.existsSync(htmlPath) ? fs.readFileSync(htmlPath, 'utf8') : null;
+    var normalize = function (str) {
+        return str ? str.replace(/\r\n/g, '\n').trim() : '';
+    };
+    if (normalize(existing) !== normalize(html)) {
+        fs.writeFileSync(htmlPath, html, 'utf8');
+        console.log('    📄 生成頁面：projects/' + id + '.html');
+    }
 }
 
 // ── 掃描所有 JSON，重建 all.json + 生成 .html ──
