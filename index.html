@@ -722,7 +722,7 @@ $(document).ready(function() {
                 <div class="container">
                     <div class="pageTitle">
                         <h2 class="title">Featured Projects</h2>
-                        <p class="subtitle">A showcase of recent projects built with<br class="mobile"> passion and precision.</p>
+                        <p class="subtitle">Bringing stories to life through Art & Design.</p>
                     </div>
                     <div class="grid-wrap">
                         <div class="grid" id="homepage-projects-grid">
@@ -803,28 +803,6 @@ $(document).ready(function() {
 
                                 // 綁定滑鼠滾輪橫向滾動控制
                                 var grid = $('#homepage-projects-grid');
-                                // Apply configurable edge fade width if provided
-                                var wrapEl = document.querySelector('.homepage-projects-section .grid-wrap');
-                                if (wrapEl && window.homepageProjectsConfig && window.homepageProjectsConfig.edgeFadeWidth) {
-                                    wrapEl.style.setProperty('--hp-edge-width', window.homepageProjectsConfig.edgeFadeWidth);
-                                }
-
-                                // Set edge gradient colors based on section background color
-                                (function applyEdgeColorFromBackground() {
-                                    try {
-                                        var section = document.querySelector('.homepage-projects-section');
-                                        if (!section || !wrapEl) return;
-                                        var bg = getComputedStyle(section).backgroundColor || '';
-                                        var m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([0-9.]+))?\)/);
-                                        if (m) {
-                                            var r = m[1], g = m[2], b = m[3];
-                                            var start = 'rgba(' + r + ',' + g + ',' + b + ',0.95)';
-                                            var end = 'rgba(' + r + ',' + g + ',' + b + ',0)';
-                                            wrapEl.style.setProperty('--hp-edge-start', start);
-                                            wrapEl.style.setProperty('--hp-edge-end', end);
-                                        }
-                                    } catch (e) {}
-                                })();
 
                                 // Duplicate children to create an infinite seamless loop
                                 var $items = grid.children().clone(true);
