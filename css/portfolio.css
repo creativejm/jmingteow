@@ -318,6 +318,7 @@ select, .card, .sticky { cursor: none; }
 #detailDesc.align-left { text-align: left; }
 #detailDesc.align-center { text-align: center; }
 #detailDesc.align-right { text-align: right; }
+body.dark-mode #detailDesc { color: var(--pri01); }
 
 /* 🧩 動態排版積木區（核心組件）*/
 
